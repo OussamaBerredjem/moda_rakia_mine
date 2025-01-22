@@ -48,7 +48,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     Future.delayed(
-      Duration(seconds: 5),
+      Duration(seconds: 2),
       () => Navigator.pushReplacementNamed(context, '/gender'),
     );
     super.initState();
@@ -57,9 +57,12 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.primaryColor,
+      backgroundColor: Color.fromARGB(255,147,25,30),
       body: Center(
-        child: Image.asset('assets/images/logo.png'),
+        child: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.sizeOf(context).height*.085),
+          child: Image.asset('assets/images/splash.png'),
+        ),
       ),
     );
   }

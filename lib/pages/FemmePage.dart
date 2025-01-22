@@ -25,113 +25,115 @@ class _FemmePageState extends State<FemmePage> {
   // }
 
   void calculateSize() {
-    double chest = double.tryParse(chestController.text) ?? 0;
-    double waist = double.tryParse(waistController.text) ?? 0;
-    double hip = double.tryParse(hipController.text) ?? 0;
+  double chest = double.tryParse(chestController.text) ?? 0;
+  double waist = double.tryParse(waistController.text) ?? 0;
+  double hip = double.tryParse(hipController.text) ?? 0;
 
-    int size = determineSize(chest, waist, hip);
+  int size = determineSize(chest, waist, hip);
 
-    if (size != 0) {
-      setState(() {
-        resultMessage = "المقاس المناسب لك هو $size ";
-      });
-    } else {
-      setState(() {
-        resultMessage = 'لا يمكننا تحديد مقاسك باستخدام هذه القياسات';
-      });
-    }
+  if (size != 0) {
+    setState(() {
+      resultMessage = "المقاس المناسب لك هو $size ";
+    });
+  } else {
+    setState(() {
+      resultMessage = 'لا يمكننا تحديد مقاسك باستخدام هذه القياسات';
+    });
+  }
+}
+
+int determineSize(double chest, double waist, double hip) {
+  int sizeDuClient = 0;
+
+  // Adjust chest measurement
+  if (80 <= chest && chest <= 83) {
+    sizeDuClient = 34;
+  } else if (84 <= chest && chest <= 87) {
+    sizeDuClient = 36;
+  } else if (88 <= chest && chest <= 91) {
+    sizeDuClient = 38;
+  } else if (92 <= chest && chest <= 95) {
+    sizeDuClient = 40;
+  } else if (96 <= chest && chest <= 99) {
+    sizeDuClient = 42;
+  } else if (100 <= chest && chest <= 103) {
+    sizeDuClient = 44;
+  } else if (104 <= chest && chest <= 109) {
+    sizeDuClient = 46;
+  } else if (110 <= chest && chest <= 115) {
+    sizeDuClient = 48;
+  } else if (116 <= chest && chest <= 121) {
+    sizeDuClient = 50;
+  } else if (122 <= chest && chest <= 127) {
+    sizeDuClient = 52;
+  } else if (128 <= chest && chest <= 133) {
+    sizeDuClient = 54;
+  } else if (134 <= chest && chest <= 139) {
+    sizeDuClient = 58;
+  } else if (140 <= chest) {
+    sizeDuClient = 60;
   }
 
-  int determineSize(double chest, double waist, double hip) {
-    int sizeDuClient = 0;
-
-    if (77 <= chest && chest < 80) {
-      sizeDuClient = 34;
-    } else if (80 <= chest && chest < 84) {
-      sizeDuClient = 36;
-    } else if (84 <= chest && chest < 88) {
-      sizeDuClient = 38;
-    } else if (88 <= chest && chest < 92) {
-      sizeDuClient = 40;
-    } else if (92 <= chest && chest < 96) {
-      sizeDuClient = 42;
-    } else if (96 <= chest && chest < 100) {
-      sizeDuClient = 44;
-    } else if (100 <= chest && chest < 104) {
-      sizeDuClient = 46;
-    } else if (104 <= chest && chest < 108) {
-      sizeDuClient = 48;
-    } else if (108 <= chest && chest < 112) {
-      sizeDuClient = 50;
-    } else if (112 <= chest && chest < 116) {
-      sizeDuClient = 52;
-    } else if (116 <= chest && chest < 120) {
-      sizeDuClient = 54;
-    } else if (120 <= chest && chest < 124) {
-      sizeDuClient = 56;
-    } else if (124 <= chest && chest < 128) {
-      sizeDuClient = 58;
-    }
-
-    if (62 <= waist && waist < 64) {
-      sizeDuClient = sizeDuClient > 34 ? sizeDuClient : 34;
-    } else if (64 <= waist && waist < 66) {
-      sizeDuClient = sizeDuClient > 36 ? sizeDuClient : 36;
-    } else if (66 <= waist && waist < 70) {
-      sizeDuClient = sizeDuClient > 38 ? sizeDuClient : 38;
-    } else if (70 <= waist && waist < 74) {
-      sizeDuClient = sizeDuClient > 40 ? sizeDuClient : 40;
-    } else if (74 <= waist && waist < 78) {
-      sizeDuClient = sizeDuClient > 42 ? sizeDuClient : 42;
-    } else if (78 <= waist && waist < 82) {
-      sizeDuClient = sizeDuClient > 44 ? sizeDuClient : 44;
-    } else if (82 <= waist && waist < 86) {
-      sizeDuClient = sizeDuClient > 46 ? sizeDuClient : 46;
-    } else if (86 <= waist && waist < 92) {
-      sizeDuClient = sizeDuClient > 48 ? sizeDuClient : 48;
-    } else if (92 <= waist && waist < 98) {
-      sizeDuClient = sizeDuClient > 50 ? sizeDuClient : 50;
-    } else if (98 <= waist && waist < 104) {
-      sizeDuClient = sizeDuClient > 52 ? sizeDuClient : 52;
-    } else if (104 <= waist && waist < 110) {
-      sizeDuClient = sizeDuClient > 54 ? sizeDuClient : 54;
-    } else if (110 <= waist && waist < 116) {
-      sizeDuClient = sizeDuClient > 56 ? sizeDuClient : 56;
-    } else if (116 <= waist && waist < 122) {
-      sizeDuClient = sizeDuClient > 58 ? sizeDuClient : 58;
-    }
-
-    // Determine the size based on hip measurement
-    if (85 <= hip && hip < 88) {
-      sizeDuClient = sizeDuClient > 34 ? sizeDuClient : 34;
-    } else if (88 <= hip && hip < 92) {
-      sizeDuClient = sizeDuClient > 36 ? sizeDuClient : 36;
-    } else if (92 <= hip && hip < 96) {
-      sizeDuClient = sizeDuClient > 38 ? sizeDuClient : 38;
-    } else if (96 <= hip && hip < 100) {
-      sizeDuClient = sizeDuClient > 40 ? sizeDuClient : 40;
-    } else if (100 <= hip && hip < 104) {
-      sizeDuClient = sizeDuClient > 42 ? sizeDuClient : 42;
-    } else if (104 <= hip && hip < 108) {
-      sizeDuClient = sizeDuClient > 44 ? sizeDuClient : 44;
-    } else if (108 <= hip && hip < 112) {
-      sizeDuClient = sizeDuClient > 46 ? sizeDuClient : 46;
-    } else if (112 <= hip && hip < 118) {
-      sizeDuClient = sizeDuClient > 48 ? sizeDuClient : 48;
-    } else if (118 <= hip && hip < 124) {
-      sizeDuClient = sizeDuClient > 50 ? sizeDuClient : 50;
-    } else if (124 <= hip && hip < 130) {
-      sizeDuClient = sizeDuClient > 52 ? sizeDuClient : 52;
-    } else if (130 <= hip && hip < 136) {
-      sizeDuClient = sizeDuClient > 54 ? sizeDuClient : 54;
-    } else if (136 <= hip && hip < 142) {
-      sizeDuClient = sizeDuClient > 56 ? sizeDuClient : 56;
-    } else if (142 <= hip && hip < 148) {
-      sizeDuClient = sizeDuClient > 58 ? sizeDuClient : 58;
-    }
-
-    return sizeDuClient;
+  // Adjust waist measurement
+  if (60 <= waist && waist <= 63) {
+    sizeDuClient = sizeDuClient > 34 ? sizeDuClient : 34;
+  } else if (64 <= waist && waist <= 67) {
+    sizeDuClient = sizeDuClient > 36 ? sizeDuClient : 36;
+  } else if (68 <= waist && waist <= 71) {
+    sizeDuClient = sizeDuClient > 38 ? sizeDuClient : 38;
+  } else if (72 <= waist && waist <= 75) {
+    sizeDuClient = sizeDuClient > 40 ? sizeDuClient : 40;
+  } else if (76 <= waist && waist <= 79) {
+    sizeDuClient = sizeDuClient > 42 ? sizeDuClient : 42;
+  } else if (80 <= waist && waist <= 83) {
+    sizeDuClient = sizeDuClient > 44 ? sizeDuClient : 44;
+  } else if (84 <= waist && waist <= 89) {
+    sizeDuClient = sizeDuClient > 46 ? sizeDuClient : 46;
+  } else if (90 <= waist && waist <= 95) {
+    sizeDuClient = sizeDuClient > 48 ? sizeDuClient : 48;
+  } else if (96 <= waist && waist <= 101) {
+    sizeDuClient = sizeDuClient > 50 ? sizeDuClient : 50;
+  } else if (102 <= waist && waist <= 107) {
+    sizeDuClient = sizeDuClient > 52 ? sizeDuClient : 52;
+  } else if (108 <= waist && waist <= 113) {
+    sizeDuClient = sizeDuClient > 54 ? sizeDuClient : 54;
+  } else if (114 <= waist && waist <= 119) {
+    sizeDuClient = sizeDuClient > 58 ? sizeDuClient : 58;
+  } else if (120 <= waist) {
+    sizeDuClient = sizeDuClient > 60 ? sizeDuClient : 60;
   }
+
+  // Adjust hip measurement
+  if (86 <= hip && hip <= 89) {
+    sizeDuClient = sizeDuClient > 34 ? sizeDuClient : 34;
+  } else if (90 <= hip && hip <= 93) {
+    sizeDuClient = sizeDuClient > 36 ? sizeDuClient : 36;
+  } else if (94 <= hip && hip <= 97) {
+    sizeDuClient = sizeDuClient > 38 ? sizeDuClient : 38;
+  } else if (98 <= hip && hip <= 101) {
+    sizeDuClient = sizeDuClient > 40 ? sizeDuClient : 40;
+  } else if (102 <= hip && hip <= 105) {
+    sizeDuClient = sizeDuClient > 42 ? sizeDuClient : 42;
+  } else if (106 <= hip && hip <= 109) {
+    sizeDuClient = sizeDuClient > 44 ? sizeDuClient : 44;
+  } else if (110 <= hip && hip <= 115) {
+    sizeDuClient = sizeDuClient > 46 ? sizeDuClient : 46;
+  } else if (116 <= hip && hip <= 121) {
+    sizeDuClient = sizeDuClient > 48 ? sizeDuClient : 48;
+  } else if (122 <= hip && hip <= 127) {
+    sizeDuClient = sizeDuClient > 50 ? sizeDuClient : 50;
+  } else if (128 <= hip && hip <= 133) {
+    sizeDuClient = sizeDuClient > 52 ? sizeDuClient : 52;
+  } else if (134 <= hip && hip <= 139) {
+    sizeDuClient = sizeDuClient > 54 ? sizeDuClient : 54;
+  } else if (140 <= hip && hip <= 145) {
+    sizeDuClient = sizeDuClient > 58 ? sizeDuClient : 58;
+  } else if (146 <= hip) {
+    sizeDuClient = sizeDuClient > 60 ? sizeDuClient : 60;
+  }
+
+  return sizeDuClient;
+}
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +162,7 @@ class _FemmePageState extends State<FemmePage> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 5, 4, 26),
+        backgroundColor: AppColor.primaryColor,
         elevation: 8,
       ),
       body: Stepper(
@@ -255,8 +257,8 @@ class _FemmePageState extends State<FemmePage> {
             return;
           }
           if (currentStep == 0 && chestController.text.isNotEmpty) {
-            if (double.tryParse(chestController.text)! < 77 ||
-                double.tryParse(chestController.text)! > 128) {
+            if (double.tryParse(chestController.text)! < 80 ||
+                double.tryParse(chestController.text)! > 140) {
               showSnackBar(
                   'هناك خطأ في قياس الصدر الذي أدخلته. يُرجى التأكد من إدخال قيمة صحيحة. ',
                   context);
@@ -265,8 +267,8 @@ class _FemmePageState extends State<FemmePage> {
             }
           }
           if (currentStep == 1 && waistController.text.isNotEmpty) {
-            if (double.tryParse(waistController.text)! < 62 ||
-                double.tryParse(waistController.text)! > 122) {
+            if (double.tryParse(waistController.text)! < 60 ||
+                double.tryParse(waistController.text)! > 120) {
               showSnackBar(
                   'هناك خطأ في قياس الخصر الذي أدخلته. يُرجى التأكد من إدخال قيمة صحيحة. ',
                   context);
@@ -275,8 +277,8 @@ class _FemmePageState extends State<FemmePage> {
             }
           }
           if (currentStep == 2 && hipController.text.isNotEmpty) {
-            if (double.tryParse(hipController.text)! < 85 ||
-                double.tryParse(hipController.text)! > 148) {
+            if (double.tryParse(hipController.text)! < 86 ||
+                double.tryParse(hipController.text)! > 146) {
               showSnackBar(
                   'هناك خطأ في قياس الورك الذي أدخلته. يُرجى التأكد من إدخال قيمة صحيحة. ',
                   context);
@@ -344,7 +346,7 @@ class _FemmePageState extends State<FemmePage> {
                       hintTextDirection: TextDirection.ltr,
                       contentPadding: EdgeInsets.symmetric(horizontal: 13),
                       labelText: 'دوران الصدر',
-                      suffixText: '77-128',
+                      suffixText: '80-140',
                       labelStyle: TextStyle(
                         color: Color.fromARGB(255, 92, 91, 91),
                         fontSize: 15,
@@ -388,7 +390,7 @@ class _FemmePageState extends State<FemmePage> {
                     controller: waistController,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
-                      suffixText: '62-122',
+                      suffixText: '60-120',
                       contentPadding: EdgeInsets.symmetric(horizontal: 13),
                       labelText: 'دوران الخصر',
                       labelStyle: TextStyle(
@@ -434,7 +436,7 @@ class _FemmePageState extends State<FemmePage> {
                     controller: hipController,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
-                      suffixText: '85-148',
+                      suffixText: '86-146',
                       contentPadding: EdgeInsets.symmetric(horizontal: 13),
                       labelText: 'دوران الورك',
                       labelStyle: TextStyle(

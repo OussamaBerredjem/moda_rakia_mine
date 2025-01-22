@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:modarakia/main.dart';
+import 'package:modarakia/utils/constants.dart';
 
 class ResultEnfant extends StatefulWidget {
   final String resultMessage;
@@ -23,7 +24,7 @@ class _ResultEnfantState extends State<ResultEnfant> {
               color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 5, 4, 26),
+        backgroundColor: AppColor.primaryColor,
         elevation: 8,
       ),
       body: Container(

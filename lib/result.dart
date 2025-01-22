@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:modarakia/main.dart';
+import 'package:modarakia/utils/constants.dart';
 
 
 class Result extends StatefulWidget {
@@ -29,7 +30,7 @@ class _ResultState extends State<Result> {
               color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 5, 4, 26),
+        backgroundColor: AppColor.primaryColor,
         elevation: 8,
       ),
       body: Container(

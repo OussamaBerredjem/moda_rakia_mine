@@ -13,10 +13,11 @@ class _GenderPageState extends State<GenderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text(
-          '',
+          'اختر المناسب',
           style: TextStyle(
               color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
@@ -25,42 +26,34 @@ class _GenderPageState extends State<GenderPage> {
         backgroundColor: AppColor.primaryColor,
         elevation: 8,
       ),
-      body: Center(
-        child: Container(
-          width: MediaQuery.sizeOf(context).width,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'اختر المناسب',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: AppColor.primaryColor,
-                ),
-              ),
-              const SizedBox(height: 30),
-              defaultButtton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/femme');
-                },
-                childText: 'امرأة',
-                halfWidth: (MediaQuery.of(context).size.width * .6) / 2.5,
-                halfHeight: 8,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              defaultButtton(
-                onPressed: () {
+      body: SizedBox(
+        width: MediaQuery.sizeOf(context).width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              flex: 5,
+              child: GestureDetector(
+                onTap: () {
                   Navigator.pushNamed(context, '/enfant');
                 },
-                childText: 'طفل',
-                halfWidth: (MediaQuery.of(context).size.width * .6) / 2.5,
-                halfHeight: 8,
-              ),
-            ],
-          ),
+                child: Image.asset("assets/images/son.png"),
+              )
+            ),
+      
+             Expanded(
+              flex: 5,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/femme');
+                },
+                child: Container(
+                  color: AppColor.primaryColor,
+                  child: Image.asset("assets/images/women.png",)),
+              )
+            ),
+          ],
         ),
       ),
     );
